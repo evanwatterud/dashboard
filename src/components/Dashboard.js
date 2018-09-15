@@ -1,11 +1,13 @@
 import React from 'react'
 
-const Dashboard = () => {
-  return (
-    <div>
-      <h1>Dashboard Page</h1>
-    </div>
-  )
-}
+import withAuthorization from './withAuthorization'
 
-export default Dashboard
+const Dashboard = () => (
+  <div>
+    <h1>Dashboard Page</h1>
+  </div>
+)
+
+const isAuth = authUser => !!authUser
+
+export default withAuthorization(isAuth)(Dashboard)

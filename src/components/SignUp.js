@@ -5,14 +5,12 @@ import PropTypes from 'prop-types'
 import { auth } from '../firebase'
 import * as routes from '../constants/routes'
 
-const SignUpPage = ({ history }) => {
-  return (
-    <div>
-      <h1>SignUp</h1>
-      <SignUpForm history={history} />
-    </div>
-  )
-}
+const SignUpPage = ({ history }) => (
+  <div>
+    <h1>SignUp</h1>
+    <SignUpForm history={history} />
+  </div>
+)
 
 SignUpPage.propTypes = {
   history: PropTypes.shape({}).isRequired
@@ -102,15 +100,13 @@ SignUpForm.propTypes = {
   history: PropTypes.shape({}).isRequired
 }
 
-const SignUpLink = () => {
-  return (
-    <p>
-      Don&apos;t have an account?
-      {' '}
-      <Link to={routes.SIGN_UP}>Sign Up</Link>
-    </p>
-  )
-}
+const SignUpLink = () => (
+  <p>
+    Don&apos;t have an account?
+    {' '}
+    <Link to={routes.SIGN_UP}>Sign Up</Link>
+  </p>
+)
 
 export default withRouter(SignUpPage)
 

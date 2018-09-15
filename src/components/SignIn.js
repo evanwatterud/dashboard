@@ -6,15 +6,13 @@ import { SignUpLink } from './SignUp'
 import { auth } from '../firebase'
 import * as routes from '../constants/routes'
 
-const SignInPage = ({ history }) => {
-  return (
-    <div>
-      <h1>Sign In Page</h1>
-      <SignInForm history={history} />
-      <SignUpLink />
-    </div>
-  )
-}
+const SignInPage = ({ history }) => (
+  <div>
+    <h1>Sign In Page</h1>
+    <SignInForm history={history} />
+    <SignUpLink />
+  </div>
+)
 
 SignInPage.propTypes = {
   history: PropTypes.shape({}).isRequired
