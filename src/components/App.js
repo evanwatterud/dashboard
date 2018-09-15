@@ -9,6 +9,7 @@ import LandingPage from './Landing'
 import SignUpPage from './SignUp'
 import SignInPage from './SignIn'
 import DashboardPage from './Dashboard'
+import PasswordForgetPage from './PasswordForget'
 import withAuthentication from './withAuthentication'
 
 import * as routes from '../constants/routes'
@@ -23,6 +24,7 @@ const App = () => (
       <Route exact path={routes.SIGN_UP} component={SignUpPage} />
       <Route exact path={routes.SIGN_IN} component={SignInPage} />
       <Route exact path={routes.DASHBOARD} component={DashboardPage} />
+      <Route exact path={routes.PASSWORD_FORGET} component={PasswordForgetPage} />
     </div>
   </Router>
 )
