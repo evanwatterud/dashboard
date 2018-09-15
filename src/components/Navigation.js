@@ -33,7 +33,11 @@ const Navigation = ({ authUser }) => {
 }
 
 Navigation.propTypes = {
-  authUser: PropTypes.shape({}).isRequired
+  authUser: PropTypes.shape({})
+}
+
+Navigation.defaultProps = {
+  authUser: null
 }
 
 export default Navigation

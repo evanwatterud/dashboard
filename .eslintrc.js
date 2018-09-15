@@ -49,7 +49,7 @@ module.exports = {
     "no-nested-ternary": "off",
     "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
-    "no-unused-expressions": "warn",
+    "no-unused-expressions": ["warn", { "allowTernary": true }],
     "no-useless-concat": "warn",
     "block-scoped-var": "error",
     "consistent-return": "error",
