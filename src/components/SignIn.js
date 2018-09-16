@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import withoutAuthorization from './withoutAuthorization'
 import { SignUpLink } from './SignUp'
 import { PasswordForgetLink } from './PasswordForget'
 import { auth } from '../firebase'
@@ -85,7 +86,9 @@ SignInForm.propTypes = {
   history: PropTypes.shape({}).isRequired
 }
 
-export default withRouter(SignInPage)
+const isAuth = authUser => !!authUser
+
+export default withoutAuthorization(isAuth)(withRouter(SignInPage))
 
 export {
   SignInForm

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
+import withoutAuthorization from './withoutAuthorization'
 import { auth, db } from '../firebase'
 import * as routes from '../constants/routes'
 
@@ -13,7 +14,12 @@ const SignUpPage = ({ history }) => (
 )
 
 SignUpPage.propTypes = {
-  history: PropTypes.shape({}).isRequired
+  history: PropTypes.shape({}).isRequired,
+  authUser: PropTypes.shape({})
+}
+
+SignUpPage.defaultProps = {
+  authUser: null
 }
 
 const INITIAL_STATE = {
@@ -116,7 +122,9 @@ const SignUpLink = () => (
   </p>
 )
 
-export default withRouter(SignUpPage)
+const isAuth = authUser => !!authUser
+
+export default withoutAuthorization(isAuth)(withRouter(SignUpPage))
 
 export {
   SignUpForm,
