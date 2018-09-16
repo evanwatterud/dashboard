@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { Link, withRouter } from 'react-router-dom'
 import PropTypes from 'prop-types'
 
-import { auth } from '../firebase'
+import { auth, db } from '../firebase'
 import * as routes from '../constants/routes'
 
 const SignUpPage = ({ history }) => (
@@ -33,16 +33,24 @@ class SignUpForm extends Component {
 
   onSubmit = (event) => {
     const {
+      username,
       email,
       passwordOne
     } = this.state
 
     const { history } = this.props
 
+    // Add the user to Firebase authentication
     auth.doCreateUserWithEmailAndPassword(email, passwordOne)
-      .then(() => {
-        this.setState({ ...INITIAL_STATE })
-        history.push(routes.DASHBOARD)
+      .then((authUser) => {
+        db.doCreateUser(authUser.user.uid, username, email) // Add the user to the database
+          .then(() => {
+            this.setState({ ...INITIAL_STATE })
+            history.push(routes.DASHBOARD)
+          })
+          .catch((err) => {
+            this.setState({ error: err })
+          })
       })
       .catch((err) => {
         this.setState({ error: err })
