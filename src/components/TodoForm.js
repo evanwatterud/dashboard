@@ -16,7 +16,11 @@ class TodoForm extends React.Component {
     const isInvalid = todoItem === ''
 
     return (
-      <form onSubmit={event => onSubmit(event, todoItem)}>
+      <form onSubmit={(event) => {
+        onSubmit(event, todoItem)
+        this.setState({ todoItem: '' }) // To clear the input value
+      }}
+      >
         <input
           value={todoItem}
           onChange={(event) => { this.handleChange('todoItem', event.target.value) }}
